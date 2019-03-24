@@ -8,7 +8,7 @@ Beatcop is loosely based on the locking patterns described at http://redis.io/co
 """
 
 import atexit
-import ConfigParser
+import configparser
 import logging
 import os
 import redis
@@ -18,6 +18,7 @@ import socket
 import subprocess
 import sys
 import time
+from functools import reduce
 
 try:
     import rediscluster
@@ -211,14 +212,14 @@ class BeatCop(object):
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:
-        print "Usage: %s <ini_file>" % sys.argv[0]
+        print("Usage: %s <ini_file>" % sys.argv[0])
         sys.exit(os.EX_USAGE)
     config_file = sys.argv[1]
 
     logging.basicConfig(level=logging.INFO, format='%(asctime)s BeatCop: %(message)s', datefmt='%Y-%m-%d %H:%M:%S %Z')
     log = logging.getLogger()
 
-    conf = ConfigParser.SafeConfigParser()
+    conf = configparser.ConfigParser()
     conf.read(config_file)
     sections = conf.sections()
 

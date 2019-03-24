@@ -27,7 +27,7 @@ setup_kwargs = dict(
     maintainer_email='hoverhell@gmail.com',
     url='https://github.com/Luluvise/BeatCop',
     requires=['redis(>=2.9.1)'],
-    scripts=['beatcop.py'],
+    scripts=['beatcop'],
 )
 
 
